@@ -4,7 +4,7 @@ defmodule TermineDb.Repo.Migrations.AddMob do
   def change do
     create table("mobs") do
       add :name, :string
-      add :loot_table, :json
+      add :loot_table, :map
       add :health, :integer
     end
   end

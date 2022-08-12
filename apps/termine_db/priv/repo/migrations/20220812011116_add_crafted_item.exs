@@ -4,7 +4,7 @@ defmodule TermineDb.Repo.Migrations.AddCraftedItem do
   def change do
     create table("crafted_items") do
       add :name, :string
-      add :recipe, :json
+      add :recipe, :map
     end
   end
 end

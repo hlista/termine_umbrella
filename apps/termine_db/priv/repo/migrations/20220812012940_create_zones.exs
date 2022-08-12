@@ -9,7 +9,7 @@ defmodule TermineDb.Repo.Migrations.CreateZones do
       add :description, :text
       add :current_mob_id, references(:mobs, on_delete: :nothing)
       add :current_mob_health, :integer
-      add :neighbors, :json
+      add :neighbors, :map
     end
 
     create unique_index(:zones, [:name])

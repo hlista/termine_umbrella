@@ -5,7 +5,7 @@ defmodule TermineDb.Repo.Migrations.CreateMinerTable do
     create table(:miners) do
       add :name, :string
       add :user_id, references(:users, on_delete: :delete_all)
-      add :stats, :json
+      add :stats, :map
     end
 
     create index(:miners, [:user_id])
