@@ -4,10 +4,10 @@ defmodule TermineDb.Repo.Migrations.CreateMinerTable do
   def change do
     create table(:miners) do
       add :name, :string
-      add :user_id, references(:users, on_delete: :delete_all)
+      add :player_id, references(:players, on_delete: :delete_all)
       add :stats, :map
     end
 
-    create index(:miners, [:user_id])
+    create index(:miners, [:player_id])
   end
 end

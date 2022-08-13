@@ -3,10 +3,10 @@ defmodule TermineDb.Repo.Migrations.CreateInventoryTable do
 
   def change do
     create table(:inventories) do
-      add :user_id, references(:users, on_delete: :delete_all)
+      add :player_id, references(:players, on_delete: :delete_all)
       add :contents, :map
     end
 
-    create unique_index(:inventories, [:user_id])
+    create unique_index(:inventories, [:player_id])
   end
 end
