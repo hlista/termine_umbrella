@@ -5,52 +5,52 @@ defmodule TermineDb.World do
     Zone
   }
 
-  def all_crafted_items(params \\ %{}) do
-    Actions.all(CraftedItem, params)
+  def all_mobs(params \\ %{}) do
+    Actions.all(Mob, params)
   end
 
-  def find_crafted_item(params) do
-    Actions.find(CraftedItem, params)
+  def find_mob(params) do
+    Actions.find(Mob, params)
   end
 
-  def create_crafted_item(params) do
-    Actions.create(CraftedItem, params)
+  def create_mob(params) do
+    Actions.create(Mob, params)
   end
 
-  def find_and_update_crafted_item(find_params, update_params) do
-    Actions.find_and_update(CraftedItem, find_params, update_params)
+  def find_and_update_mob(find_params, update_params) do
+    Actions.find_and_update(Mob, find_params, update_params)
   end
 
-  def update_crafted_item(id, update_params) do
-    Actions.update(CraftedItem, id, update_params)
+  def update_mob(id, update_params) do
+    Actions.update(Mob, id, update_params)
   end
 
-  def delete_crafted_item(id) do
-    Actions.delete(CraftedItem, id)
+  def delete_mob(id) do
+    Actions.delete(Mob, id)
   end
 
 
-  def all_items(params \\ %{}) do
-    Actions.all(Item, params)
+  def all_zones(params \\ %{}) do
+    Actions.all(Zone, params)
   end
 
-  def find_item(params) do
-    Actions.find(Item, params)
+  def find_zone(params) do
+    Actions.find(Zone, params)
   end
 
-  def create_tem(params) do
-    Actions.create(Item, params)
+  def create_zone(params) do
+    Actions.create(Zone, params)
   end
 
-  def find_and_update_item(find_params, update_params) do
-    Actions.find_and_update(Item, find_params, update_params)
+  def find_and_update_zone(find_params, update_params) do
+    Actions.find_and_update(Zone, find_params, update_params)
   end
 
-  def update_item(id, update_params) do
-    Actions.update(Item, id, update_params)
+  def update_zone(id, update_params) do
+    Actions.update(Zone, id, update_params)
   end
 
-  def delete_item(id) do
-    Actions.delete(Item, id)
+  def delete_zone(id) do
+    Actions.delete(Zone, id)
   end
 end
