@@ -4,6 +4,10 @@ defmodule TermineDb.Resource.CraftedItem do
 
   schema "crafted_items" do
     field :name, :string
-    field :recipe, :map
+    embeds_many :recipe do
+      field :item_id, :integer
+      field :item_name, :string
+      field :amount, :integer
+    end
   end
 end

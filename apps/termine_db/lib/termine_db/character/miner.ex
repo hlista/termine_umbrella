@@ -6,6 +6,8 @@ defmodule TermineDb.Character.Miner do
   schema "miners" do
     field :name, :string
     belongs_to :player, Player
-    field :stats, :map
+    embeds_one :stats do
+      field :health, :integer
+    end
   end
 end

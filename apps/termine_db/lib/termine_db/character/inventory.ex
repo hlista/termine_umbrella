@@ -5,6 +5,10 @@ defmodule TermineDb.Character.Inventory do
 
   schema "inventories" do
     belongs_to :player, Player
-    field :contents, :map
+    embeds_many :contents do
+      field :item_id, :integer
+      field :item_name, :string
+      field :amount, :integer
+    end
   end
 end
