@@ -15,7 +15,14 @@ defmodule TermineWorld do
   #given a list of crafted_item_ids. Gathers their recipes and checks if
   #all of our available items can craft them
   def can_craft_items?(crafted_items, available_items) do
-    false
+    crafted_items = TermineDb.Resource.all_crafted_items(%{id: crafted_items})
+    items_needed =
+    Enum.reduce(crafted_items, [], fn %{recipe: recipe}, outer_acc -> 
+      Enum.reduce(recipe, outer_acc, fn %{item_id: id}, inner_acc ->
+        [id | inner_acc]
+      end)
+    end)
+    Enum.uniq(items_needed) -- available_items === []
   end
 
   # Takes a list of the mobs that are currently spawned in the world
@@ -26,7 +33,7 @@ defmodule TermineWorld do
 
     Enum.reduce(available_mobs, available_items, fn %{loot_table: loot_table}, outer_acc ->
       Enum.reduce(loot_table, outer_acc, fn %{item_id: item_id}, inner_acc ->
-        Enum.unique([item_id | inner_acc])
+        Enum.uniq([item_id | inner_acc])
       end)
     end)
   end
@@ -35,7 +42,7 @@ defmodule TermineWorld do
   #Outputs which of it's neighbors are reachable
   def build_reachable_zones(current_zone_id, mobs_already_spawned_id_list) do
     with {:ok, zone} <- TermineDb.World.find_zone(%{id: current_zone_id}) do
-      mobs_already_spawned_id_list = Enum.unique([zone.current_mob_id | mobs_already_spawned_id_list])
+      mobs_already_spawned_id_list = Enum.uniq([zone.current_mob_id | mobs_already_spawned_id_list])
       available_items = build_available_items_id_list(mobs_already_spawned_id_list)
       reachable_neighbors = []
       Enum.reduce(zone.neighbors, reachable_neighbors, fn 
