@@ -42,7 +42,8 @@ defmodule TermineDb.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
-      {:ecto_shorts, "~> 2.2.1"}
+      {:ecto_shorts, "~> 2.2.1"},
+      {:oban, "~> 2.13"}
     ]
   end
 

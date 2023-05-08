@@ -13,6 +13,9 @@ import Config
 config :termine_db,
   ecto_repos: [TermineDb.Repo]
 
+config :ecto_shorts,
+  repo: TermineDb.Repo
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
